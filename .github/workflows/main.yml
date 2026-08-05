@@ -22,9 +22,11 @@ jobs:
         run: npm run build
 
       - name: Create Android
-        run: |
-          npm install @capacitor/android
-          npx cap add android
+  run: |
+    rm -rf android
+    npm install @capacitor/android
+    npx cap add android
+
 
       - name: Sync Capacitor
         run: npx cap sync android
