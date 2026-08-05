@@ -25,7 +25,7 @@ export async function uploadListingImage(
 ): Promise<StorageUploadResult> {
   const timestamp = Date.now();
   const safeUserId = userId || 'anonymous_seller';
-  const storagePath = `listings/${safeUserId}/${timestamp}_${index}.webp`;
+ const storagePath = `listings/${safeUserId}/${timestamp}_${index}.jpg`;
 
   try {
     let compressedDataUrl: string;
@@ -55,7 +55,7 @@ export async function uploadListingImage(
       
       // Upload compressed data URL directly as base64 string
       const uploadTask = uploadString(storageRef, compressedDataUrl, 'data_url', {
-        contentType: 'image/webp',
+       contentType: 'image/jpeg',
         customMetadata: {
           uploaderId: safeUserId,
           uploadedAt: new Date().toISOString(),
