@@ -1,0 +1,6 @@
+{
+  "name": "BGK WEAR",
+  "description": "Premium luxury marketplace for renting, buying, and selling wedding and traditional designer wear.",
+  "requestFramePermissions": ["camera", "microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

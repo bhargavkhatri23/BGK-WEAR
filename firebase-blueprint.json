@@ -1,0 +1,139 @@
+{
+  "entities": {
+    "users": {
+      "title": "Users",
+      "description": "User profiles for buyers, boutique sellers, and administrators",
+      "fields": {
+        "uid": { "type": "string", "description": "Firebase Auth UID" },
+        "fullName": { "type": "string", "description": "Full legal or boutique name" },
+        "email": { "type": "string", "description": "User email address" },
+        "phoneNumber": { "type": "string", "description": "Contact phone number" },
+        "whatsappNumber": { "type": "string", "description": "WhatsApp direct connect number" },
+        "profilePhoto": { "type": "string", "description": "Avatar image URL" },
+        "city": { "type": "string", "description": "Primary city" },
+        "state": { "type": "string", "description": "Primary state" },
+        "address": { "type": "string", "description": "Full shipping or pickup address" },
+        "bio": { "type": "string", "description": "Bio or boutique description" },
+        "verified": { "type": "boolean", "description": "Verified seller or renter badge" },
+        "createdAt": { "type": "string", "description": "ISO timestamp of account creation" },
+        "updatedAt": { "type": "string", "description": "ISO timestamp of last update" }
+      }
+    },
+    "products": {
+      "title": "Products",
+      "description": "Indian ethnic luxury couture outfits available for rental and purchase",
+      "fields": {
+        "productId": { "type": "string", "description": "Unique product ID" },
+        "sellerId": { "type": "string", "description": "UID of the outfit owner / seller" },
+        "title": { "type": "string", "description": "Outfit title and name" },
+        "description": { "type": "string", "description": "Detailed description, embroidery, styling notes" },
+        "category": { "type": "string", "description": "Category from standard 10 categories" },
+        "brand": { "type": "string", "description": "Designer or boutique label" },
+        "size": { "type": "string", "description": "Garment size (XS to XXL, Custom)" },
+        "color": { "type": "string", "description": "Primary color name" },
+        "condition": { "type": "string", "description": "Garment condition rating" },
+        "rentPrice": { "type": "number", "description": "Daily rental fee in INR" },
+        "salePrice": { "type": "number", "description": "Direct buy price in INR (optional)" },
+        "securityDeposit": { "type": "number", "description": "Refundable escrow security deposit" },
+        "images": { "type": "array", "description": "Array of compressed image URLs in Firebase Storage" },
+        "city": { "type": "string", "description": "Current city location of garment" },
+        "state": { "type": "string", "description": "Current state location" },
+        "availability": { "type": "boolean", "description": "Whether garment is currently available" },
+        "status": { "type": "string", "description": "Available, Booked, Rented, Sold, or Pending" },
+        "views": { "type": "number", "description": "Total view count" },
+        "likes": { "type": "number", "description": "Total wishlist / like count" },
+        "createdAt": { "type": "string", "description": "ISO timestamp of listing creation" },
+        "updatedAt": { "type": "string", "description": "ISO timestamp of last update" }
+      }
+    },
+    "rentalOrders": {
+      "title": "Rental Orders",
+      "description": "Escrow-backed rental reservations and returns",
+      "fields": {
+        "rentalId": { "type": "string", "description": "Unique rental booking ID" },
+        "productId": { "type": "string", "description": "Reference product ID" },
+        "ownerId": { "type": "string", "description": "Seller / Owner UID" },
+        "renterId": { "type": "string", "description": "Renter UID" },
+        "startDate": { "type": "string", "description": "Rental start date YYYY-MM-DD" },
+        "endDate": { "type": "string", "description": "Rental end date YYYY-MM-DD" },
+        "totalAmount": { "type": "number", "description": "Total rental fee paid" },
+        "securityDeposit": { "type": "number", "description": "Security deposit held in escrow" },
+        "paymentStatus": { "type": "string", "description": "Paid, Escrow_Held, Refunded" },
+        "orderStatus": { "type": "string", "description": "Confirmed, Dispatched, Delivered, In Use, Returned, Completed, Cancelled" },
+        "createdAt": { "type": "string", "description": "ISO timestamp" }
+      }
+    },
+    "purchaseOrders": {
+      "title": "Purchase Orders",
+      "description": "Direct outfit purchase orders",
+      "fields": {
+        "orderId": { "type": "string", "description": "Unique purchase order ID" },
+        "productId": { "type": "string", "description": "Reference product ID" },
+        "buyerId": { "type": "string", "description": "Buyer UID" },
+        "sellerId": { "type": "string", "description": "Seller UID" },
+        "totalAmount": { "type": "number", "description": "Total purchase price paid" },
+        "paymentStatus": { "type": "string", "description": "Paid, Processing, Refunded" },
+        "shippingAddress": { "type": "string", "description": "Shipping address details" },
+        "orderStatus": { "type": "string", "description": "Processing, Shipped, Out for Delivery, Delivered" },
+        "createdAt": { "type": "string", "description": "ISO timestamp" }
+      }
+    },
+    "wishlist": {
+      "title": "Wishlist",
+      "description": "Saved products for user wishlists",
+      "fields": {
+        "wishlistId": { "type": "string", "description": "Unique wishlist entry ID" },
+        "userId": { "type": "string", "description": "User UID" },
+        "productId": { "type": "string", "description": "Saved product ID" },
+        "createdAt": { "type": "string", "description": "ISO timestamp" }
+      }
+    },
+    "reviews": {
+      "title": "Reviews",
+      "description": "Product and seller ratings, fit reviews and customer photos",
+      "fields": {
+        "reviewId": { "type": "string", "description": "Unique review ID" },
+        "productId": { "type": "string", "description": "Reviewed product ID" },
+        "reviewerId": { "type": "string", "description": "Reviewer UID" },
+        "sellerId": { "type": "string", "description": "Seller UID" },
+        "rating": { "type": "number", "description": "Numeric rating 1 to 5" },
+        "review": { "type": "string", "description": "Review commentary" },
+        "createdAt": { "type": "string", "description": "ISO timestamp" }
+      }
+    },
+    "notifications": {
+      "title": "Notifications",
+      "description": "User alerts, rental inquiries, approvals and system notices",
+      "fields": {
+        "notificationId": { "type": "string", "description": "Unique notification ID" },
+        "userId": { "type": "string", "description": "Recipient User UID" },
+        "title": { "type": "string", "description": "Notification title" },
+        "message": { "type": "string", "description": "Notification body" },
+        "type": { "type": "string", "description": "rental_request, purchase_request, offer, approval, system" },
+        "isRead": { "type": "boolean", "description": "Read flag" },
+        "createdAt": { "type": "string", "description": "ISO timestamp" }
+      }
+    },
+    "categories": {
+      "title": "Categories",
+      "description": "Standard fashion categories for Indian wedding couture",
+      "fields": {
+        "name": { "type": "string", "description": "Category title" },
+        "description": { "type": "string", "description": "Category description" },
+        "image": { "type": "string", "description": "Banner photo URL" },
+        "count": { "type": "number", "description": "Number of active outfits" }
+      }
+    }
+  },
+  "indexes": [
+    { "collection": "products", "fields": ["category", "createdAt"] },
+    { "collection": "products", "fields": ["city", "rentPrice"] },
+    { "collection": "products", "fields": ["status", "availability"] },
+    { "collection": "products", "fields": ["views", "likes"] },
+    { "collection": "rentalOrders", "fields": ["renterId", "createdAt"] },
+    { "collection": "rentalOrders", "fields": ["ownerId", "orderStatus"] },
+    { "collection": "purchaseOrders", "fields": ["buyerId", "createdAt"] },
+    { "collection": "wishlist", "fields": ["userId", "createdAt"] },
+    { "collection": "notifications", "fields": ["userId", "createdAt"] }
+  ]
+}

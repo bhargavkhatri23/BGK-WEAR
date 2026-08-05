@@ -1,0 +1,19 @@
+{
+  "name": "BGK WEAR - Luxury Wedding & Traditional Wear",
+  "short_name": "BGK WEAR",
+  "description": "Premium luxury marketplace for renting, buying, and selling wedding and traditional designer wear.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050505",
+  "theme_color": "#D4AF37",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["shopping", "lifestyle", "fashion"]
+}
