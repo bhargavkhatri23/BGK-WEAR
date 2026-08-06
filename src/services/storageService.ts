@@ -49,11 +49,13 @@ export async function uploadListingImage(
     }
 
     onProgress?.(40, 'Connecting to secure cloud storage...');
+    console.log("Reached Firebase storage step");
 
     try {
       const storageRef = ref(storage, storagePath);
       
       // Upload compressed data URL directly as base64 string
+      console.log("Firebase upload start:", storagePath);
       const uploadTask = uploadString(storageRef, compressedDataUrl, 'data_url', {
         contentType: 'image/webp',
         customMetadata: {

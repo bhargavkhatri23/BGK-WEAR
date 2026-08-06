@@ -189,6 +189,43 @@ export const UploadListingModal: React.FC = () => {
     setEditingProduct(null);
     setFormError(null);
   };
+  const handleSimpleUpload = async (
+  e: React.ChangeEvent<HTMLInputElement>
+) => {
+  const files = e.target.files;
+
+  if (!files || files.length === 0) return;
+
+  try {
+    setIsCompressing(false);
+    setFormError(null);
+
+    const uploadedImages: string[] = [];
+
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      const imageUrl = URL.createObjectURL(file);
+      uploadedImages.push(imageUrl);
+    }
+
+    setImages((prev) => [...prev, ...uploadedImages]);
+
+    showToast(
+      `${uploadedImages.length} image uploaded successfully`,
+      "success"
+    );
+
+  } catch (error) {
+    console.error("Upload failed:", error);
+    showToast("Image upload failed", "error");
+  } finally {
+    setIsCompressing(false);
+
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
+  }
+};
 
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
@@ -450,7 +487,7 @@ export const UploadListingModal: React.FC = () => {
                 type="file"
                 multiple
                 accept="image/*"
-                onChange={handleFileUpload}
+               onChange={handleSimpleUpload}
                 className="hidden"
               />
               <button
